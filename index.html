@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-
 <title>Solar System Explorer</title>
-</head>
 
 <style>
+
+
 
 body{
    
@@ -104,9 +103,18 @@ background-position:
 opacity:0.3;
 z-index:-1;
 }
+#planetImage{
+display:block;
+margin:20px auto;
+width:350px;
+height:350px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 0 20px #00d4ff;
+}
 
 </style>
-
+</head>
 
 <body>
     <div class="stars"></div>
@@ -124,14 +132,13 @@ background:#333;
 margin:auto;
 border-radius:20px;
 overflow:hidden;">
+</div>
 
 <div id="progressBar"
 style="
 height:100%;
 width:0%;
-background:
-radial-gradient(circle at top,#1a1a5e,#000428 40%,#000000 100%);">
-</div>
+background:linear-gradient(90deg,#00ff99,#00d4ff);">
 
 </div>
 
