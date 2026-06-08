@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <p>
+Interactive AI Learning Application for Space Education
+</p>
+
+<title>Solar System Explorer</title>
+</head>
+
+<style>
+
+body{
+background:#0a0a23;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:30px;
+}
+
+h1{
+color:#ffd700;
+}
+
+button{
+background:#1e90ff;
+color:white;
+border:none;
+padding:12px 20px;
+margin:10px;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#info{
+margin-top:20px;
+padding:20px;
+background:#222;
+border-radius:10px;
+width:60%;
+margin-left:auto;
+margin-right:auto;
+}
+
+</style>
+
+
+
+<body>
+
+<h1>🌌 Solar System Explorer</h1>
+<h3 id="progress">Progress: 0%</h3>
+
+<button onclick="showPlanet('Mercury')">Mercury</button>
+<button onclick="showPlanet('Venus')">Venus</button>
+<button onclick="showPlanet('Earth')">Earth</button>
+<button onclick="showPlanet('Mars')">Mars</button>
+
+<button onclick="showPlanet('Jupiter')">Jupiter</button>
+<button onclick="showPlanet('Saturn')">Saturn</button>
+<button onclick="showPlanet('Uranus')">Uranus</button>
+<button onclick="showPlanet('Neptune')">Neptune</button>
+<img id="planetImage" width="300">
+<h2 id="info"></h2>
+
+<script>
+  
+
+let completed = 0;
+
+function updateProgress(){
+
+completed += 33;
+
+if(completed > 100){
+completed = 100;
+}
+
+document.getElementById("progress").innerHTML =
+"Progress: " + completed + "%";
+
+}
+
+function showPlanet(name){
+
+updateProgress();
+
+const planets = {
+
+Mercury:"Mercury is the closest planet to the Sun.",
+
+Venus:"Venus is the hottest planet in our Solar System.",
+
+Earth:"Earth is our home planet and supports life.",
+
+Mars:"Mars is known as the Red Planet.",
+
+Jupiter:"Largest planet in the Solar System.",
+
+Saturn:"Known for its beautiful rings.",
+
+Uranus:"Rotates on its side.",
+
+Neptune:"Farthest planet from the Sun."
+
+};
+const images = {
+
+Mercury:"https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg",
+
+Venus:"https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg",
+
+Earth:"https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg",
+
+Mars:"https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg"
+
+};
+
+document.getElementById("info").innerText =
+planets[name];
+
+if(images[name]){
+document.getElementById("planetImage").src =
+images[name];
+}
+
+}
+
+function checkAnswer(answer){
+
+if(answer==="Mars"){
+
+document.getElementById("quizResult").innerHTML =
+"✅ Correct Answer";
+
+updateProgress();
+
+}
+else{
+
+document.getElementById("quizResult").innerHTML =
+"❌ Wrong Answer";
+
+}
+
+}
+async function askAI(){
+
+const question =
+document.getElementById("question").value;
+
+let answer = "";
+
+if(question.toLowerCase().includes("earth")){
+answer = "Earth is the third planet from the Sun and supports life.";
+}
+else if(question.toLowerCase().includes("mars")){
+answer = "Mars is called the Red Planet because of iron oxide on its surface.";
+}
+else if(question.toLowerCase().includes("jupiter")){
+answer = "Jupiter is the largest planet in the Solar System.";
+}
+else{
+answer = "The Solar System contains 8 planets orbiting the Sun.";
+}
+
+document.getElementById("answer").innerHTML = answer;
+
+updateProgress();
+
+}
+
+function comparePlanets(){
+
+
+let p1 =
+document.getElementById("planet1").value;
+
+let p2 =
+document.getElementById("planet2").value;
+
+document.getElementById("comparison").innerHTML =
+"<h3>" + p1 + " vs " + p2 + "</h3>" +
+"<p>Both are unique planets in our Solar System.</p>";
+ if(p1 === p2){
+comparison.innerHTML =
+"Please select two different planets.";
+}
+
+}
+
+</script>
+
+<hr>
+
+<h2>Solar System Quiz</h2>
+
+<p>Which planet is called the Red Planet?</p>
+
+<button onclick="checkAnswer('Mars')">Mars</button>
+
+<button onclick="checkAnswer('Earth')">Earth</button>
+
+<button onclick="checkAnswer('Venus')">Venus</button>
+
+<div id="quizResult"></div>
+<hr>
+
+<h2>🤖 AI Space Tutor</h2>
+
+<input
+id="question"
+type="text"
+placeholder="Ask about planets..."
+style="width:300px;padding:10px;">
+
+<button onclick="askAI()">
+Ask AI
+</button>
+
+<div id="answer"></div>
+<hr>
+
+<h2>🪐 Planet Comparison</h2>
+
+<select id="planet1">
+  <option>Earth</option>
+  <option>Mars</option>
+  <option>Jupiter</option>
+  <option>Saturn</option>
+</select>
+
+<select id="planet2">
+  <option>Mars</option>
+  <option>Earth</option>
+  <option>Jupiter</option>
+  <option>Saturn</option>
+</select>
+
+<button onclick="comparePlanets()">
+Compare
+</button>
+
+<div id="comparison"></div>
+<hr>
+
+<h3>🚀 Developed by Poojita</h3>
+
+<p>Interactive AI Learning App</p>
+
+</body>
+</html>
