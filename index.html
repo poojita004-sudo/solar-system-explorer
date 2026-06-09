@@ -4,7 +4,13 @@
 <title>Solar System Explorer</title>
 
 <style>
-
+.main-card{
+width:90%;
+margin:auto;
+padding:20px;
+background:rgba(255,255,255,0.05);
+border-radius:25px;
+}
 
 
 body{
@@ -106,18 +112,65 @@ z-index:-1;
 #planetImage{
 display:block;
 margin:20px auto;
-width:350px;
-height:350px;
-object-fit:cover;
+width:280px;
+height:280px;
+object-fit:contain;
+background:black;
+padding:10px;
 border-radius:20px;
 box-shadow:0 0 20px #00d4ff;
 }
+.info-card{
+width:350px;
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:20px;
+}
 
+
+.planet-card{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.info-card{
+width:250px;
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:25px;
+box-shadow:0 0 20px rgba(0,212,255,.2);
+}
+#planetImage:hover{
+transform:scale(1.05);
+box-shadow:0 0 40px #00d4ff;
+}
+.hero-card{
+width:90%;
+margin:20px auto;
+padding:30px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border-radius:30px;
+box-shadow:0 0 30px rgba(0,212,255,.2);
+}
+.planet-buttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:10px;
+margin-top:20px;
+}
 </style>
 </head>
 
 <body>
-    <div class="stars"></div>
+<div class="stars"></div>
+
+<div class="main-card">
 
 <h1>🌌 Solar System Explorer</h1>
 <p style="color:#ddd;font-size:20px;">
@@ -132,16 +185,16 @@ background:#333;
 margin:auto;
 border-radius:20px;
 overflow:hidden;">
-</div>
 
 <div id="progressBar"
 style="
 height:100%;
 width:0%;
 background:linear-gradient(90deg,#00ff99,#00d4ff);">
-
 </div>
 
+</div>
+<div class="planet-buttons">
 <button onclick="showPlanet('Mercury')">Mercury</button>
 <button onclick="showPlanet('Venus')">Venus</button>
 <button onclick="showPlanet('Earth')">Earth</button>
@@ -150,9 +203,18 @@ background:linear-gradient(90deg,#00ff99,#00d4ff);">
 <button onclick="showPlanet('Jupiter')">Jupiter</button>
 <button onclick="showPlanet('Saturn')">Saturn</button>
 <button onclick="showPlanet('Uranus')">Uranus</button>
-<button onclick="showPlanet('Neptune')">Neptune</button>
-<img id="planetImage" width="300">
-<h2 id="info"></h2>
+<button onclick="showPlanet('Neptune')">Neptune</button></div>
+<div class="planet-card">
+
+<img id="planetImage">
+
+<div class="info-card">
+<h2 id="info">
+
+</h2>
+</div>
+
+</div>
 
 <script>
   
@@ -244,8 +306,8 @@ planets[name] +
 facts[name];
 
 if(images[name]){
-document.getElementById("planetImage").src =
-images[name];
+document.getElementById("planetImage").src = images[name];
+document.getElementById("planetImage").alt = name;
 }
 
 }
